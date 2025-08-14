@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Opening Coco App...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f2f5; text-align: center; }
+        .container { padding: 20px; }
+        h1 { color: #1c1e21; }
+        p { color: #606770; }
+        .loader { border: 4px solid #e9e9e9; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Taking you to the trip...</h1>
+        <p>If the app doesn't open automatically, please make sure you have it installed.</p>
+        <div class="loader"></div>
+    </div>
+
+    <script>
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const activityId = params.get('id');
+
+            const fallbackUrl = "https://testflight.apple.com/join/u61YVTya";
+            
+            if (!activityId) {
+                window.location.replace(fallbackUrl);
+                return;
+            }
+
+            const appUrl = `cocoapp://activity/${activityId}`;
+
+            window.location.replace(appUrl);
+
+            setTimeout(function() {
+                window.location.replace(fallbackUrl);
+            }, 3000); // 2-second delay
+        })();
+    </script>
+</body>
+</html>
