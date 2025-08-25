@@ -26,20 +26,18 @@
 
             const fallbackUrl = "https://testflight.apple.com/join/u61YVTya";
             
-  if (!groupId) {
-                window.location.href = fallbackUrl;
+            if (!groupId) {
+                window.location.replace(fallbackUrl);
                 return;
             }
 
             const appUrl = `cocoapp://group?groupId=${groupId}`;
 
-            window.location.href = appUrl;
+            window.location.replace(appUrl);
 
             setTimeout(function() {
-                if (document.visibilityState === 'visible') {
-                    window.location.href = fallbackUrl;
-                }
-            }, 10000);
+                window.location.replace(fallbackUrl);
+            }, 3000);
         })();
     </script>
 </body>
