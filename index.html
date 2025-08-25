@@ -22,16 +22,16 @@
     <script>
         (function() {
             const params = new URLSearchParams(window.location.search);
-            const activityId = params.get('id');
+            const groupId = params.get('groupId');
 
             const fallbackUrl = "https://testflight.apple.com/join/u61YVTya";
             
-            if (!activityId) {
+            if (!groupId) {
                 window.location.replace(fallbackUrl);
                 return;
             }
 
-            const appUrl = `cocoapp://activity/${activityId}`;
+            const appUrl = `cocoapp://group?groupId=${groupId}`;
 
             window.location.replace(appUrl);
 
