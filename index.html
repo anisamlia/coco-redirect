@@ -19,21 +19,23 @@
         <div class="loader"></div>
     </div>
 
-    <script>
+     <script>
         (function() {
             const params = new URLSearchParams(window.location.search);
+            
+            const activityId = params.get('activityId');
             const groupId = params.get('groupId');
 
-            const fallbackUrl = "https://testflight.apple.com/join/u61YVTya";
+            const fallbackUrl = "https://testflight.apple.com/join/YOUR_TESTFLIGHT_ID";
             
-            if (!groupId) {
-                window.location.replace(fallbackUrl);
+            if (!activityId || !groupId) {
+                window.location.href = fallbackUrl;
                 return;
             }
 
-            const appUrl = `cocoapp://group?groupId=${groupId}`;
+            const appUrl = `cocoapp://activity?activityId=${activityId}&groupId=${groupId}`;
 
-            window.location.replace(appUrl);
+            window.location = appUrl;
 
             setTimeout(function() {
                 window.location.replace(fallbackUrl);
