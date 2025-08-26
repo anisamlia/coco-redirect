@@ -25,8 +25,8 @@
             
             const activityId = params.get('activityId');
             const groupId = params.get('groupId');
-
-            const fallbackUrl = "https://testflight.apple.com/join/YOUR_TESTFLIGHT_ID";
+=
+            const fallbackUrl = "https://testflight.apple.com/join/u61YVTya";
             
             if (!activityId || !groupId) {
                 window.location.href = fallbackUrl;
@@ -35,7 +35,7 @@
 
             const appUrl = `cocoapp://activity?activityId=${activityId}&groupId=${groupId}`;
 
-            window.location = appUrl;
+            window.location.href = appUrl;
 
             setTimeout(function() {
                 window.location.replace(fallbackUrl);
